@@ -1,4 +1,7 @@
 from arcade import *
+import os
+file_path = os.path.dirname(os.path.abspath(__file__))
+os.chdir(file_path)
 WIDTH = 1600
 HEIGHT = 800
 CELL = 20
@@ -30,7 +33,11 @@ def tochkodetector_y(y):
     return temp
 
 
+texture = load_texture("images/star.bmp")
+scale = 1
 draw_tetrad()
+make_transparent_color(color.WHITE, 0.1)
+draw_texture_rectangle(tochkodetector_x(30), tochkodetector_y(10), scale * texture.width, scale * texture.height, texture, 0, alpha=1)
 draw_text("5", 1400, 150, [255, 0, 0], 60)
 draw_text("Молодец!", 1250, 100, [255, 0, 0], 40)
 draw_text("Домашняя работа.", tochkodetector_x(10), tochkodetector_y(37), [0, 213, 0], 40)
