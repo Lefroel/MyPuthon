@@ -11,6 +11,9 @@ dict = {"а":1, "А":1, "б":2, "Б":2, "в":3, "В":3,
         "э":31, "Э":31, "ю":32, "Ю":32, "я":33, "Я":33,
         " ":34}
 txt = input()
+if len(txt) % 4 != 0:
+    while len(txt) % 4 != 0:
+        txt += " "
 bukvi = []
 for i in range(0, len(txt)):
     bukvi.append(txt[i])
