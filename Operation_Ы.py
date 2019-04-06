@@ -29,4 +29,9 @@ for i in range(0, len(matr)):
     zashifr = [(matr[i][0] * int(matr_shifr[0])) + (matr[i][1] * matr_shifr[2]), (matr[i][0] * matr_shifr[1]) + (matr[i][1] * matr_shifr[3]),
                (matr[i][2] * matr_shifr[0]) + (matr[i][3] * matr_shifr[2]), (matr[i][2] * matr_shifr[1]) + (matr[i][3] * matr_shifr[3])]
     vivod.append(zashifr)
-print(vivod)
+zashifr = []
+for i in vivod:
+    zashifr += i
+f = open("poslanie.txt", "w")
+for i in zashifr:
+    f.write(str(i) + " ")
