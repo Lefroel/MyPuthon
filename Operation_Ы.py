@@ -128,14 +128,14 @@ class UltraCode(ttk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
+        self.Label_for_zashifr = ttk.Label(text=self.deshifr())
         self.Baton_for_zashifr = ttk.Button(text="Зашифровать", command=lambda: self.zashifr())
         self.Text_for_zashifr = ttk.Text(self)
         self.Baton_for_deshifr = ttk.Button(text="Дешифровать", command=lambda: self.deshifr())
-        self.Label_for_zashifr = ttk.Label(text=self.deshifr())
-        self.Baton_for_zashifr.pack()
-        self.Text_for_zashifr.pack()
         self.Baton_for_deshifr.pack()
         self.Label_for_zashifr.pack()
+        self.Baton_for_zashifr.pack()
+        self.Text_for_zashifr.pack()
 
     def zashifr(self):
         f = open("poslanie.txt", "w")
