@@ -24,6 +24,7 @@ class UltraShifr(ttk.Frame):
                      28: "ъ", -28: "Ъ", 29: "ы", -29: "Ы", 30: "ь", -30: "Ь",
                      31: "э", -31: "Э", 32: "ю", -32: "Ю", 33: "я", -33: "Я",
                      34: " ", ",": 35, 35: ",", 36: ".", ".": 36, 37: "!", "!": 37, 38: "?", "?": 38}
+        self.txt = "ошибка"
         ttk.Frame.__init__(self)
         self.pack()
         self.master.title("Матричный Шифратор 3000")
@@ -39,7 +40,7 @@ class UltraShifr(ttk.Frame):
         self.Text_for_zashifr.pack()
         self.Baton_for_deshifr.pack()
         self.Label_for_zashifr.pack()
-        self.txt = self.Text_for_zashifr.get()
+        self.txt = self.Text_for_zashifr.get(1, ttk.END)
 
     def code(self):
         if len(self.txt) % 4 != 0:
