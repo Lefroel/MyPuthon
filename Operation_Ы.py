@@ -145,6 +145,8 @@ class UltraCode(ttk.Frame):
         UltraZashifr()
 
     def deshifr(self):
-        UltraDeshifr()
+        self.update()
+        return UltraDeshifr().decode()
+
 
 UltraCode().mainloop()
