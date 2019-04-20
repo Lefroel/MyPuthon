@@ -137,7 +137,6 @@ class UltraCode(ttk.Frame):
         self.Baton_for_deshifr.pack()
         self.Label_for_zashifr.pack()
 
-
     def zashifr(self):
         f = open("poslanie.txt", "w")
         f.write(self.Text_for_zashifr.get("1.0", ttk.END))
@@ -145,7 +144,6 @@ class UltraCode(ttk.Frame):
         UltraZashifr()
 
     def deshifr(self):
-        self.update()
         return UltraDeshifr().decode()
 
 
