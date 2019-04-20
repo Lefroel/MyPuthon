@@ -1,6 +1,9 @@
 import tkinter as ttk
+
+
 class UltraShifr(ttk.Frame):
     def __init__(self):
+        self.vivod = "1"
         self.dict = {"а": 1, "А": -1, "б": 2, "Б": -2, "в": 3, "В": -3,
                      "г": 4, "Г": -4, "д": 5, "Д": -5, "е": 6, "Е": -6,
                      "ё": 7, "Ё": -7, "ж": 8, "Ж": -8, "з": 9, "З": -9,
@@ -35,12 +38,12 @@ class UltraShifr(ttk.Frame):
         self.Baton_for_zashifr = ttk.Button(text="Зашифровать", command=self.code())
         self.Text_for_zashifr = ttk.Text()
         self.Baton_for_deshifr = ttk.Button(text="Дешифровать", command=self.decode())
-        self.Label_for_zashifr = ttk.Label(text="")
+        self.Label_for_zashifr = ttk.Label(text=self.vivod)
         self.Baton_for_zashifr.pack()
         self.Text_for_zashifr.pack()
         self.Baton_for_deshifr.pack()
         self.Label_for_zashifr.pack()
-        self.txt = self.Text_for_zashifr.get(1, ttk.END)
+        self.txt = self.Text_for_zashifr.get(ttk.END)
 
     def code(self):
         if len(self.txt) % 4 != 0:
@@ -87,12 +90,9 @@ class UltraShifr(ttk.Frame):
         for i in range(0, len(decoded)):
             for g in range(0, 4):
                 k_bukvam.append(decoded[i][g])
-        vivod = []
+        self.vivod = []
         for i in k_bukvam:
-            vivod.append(self.dict[i])
-        print("Ваше послание:", end=" ")
-        for i in vivod:
-            print(i, end="")
+            self.vivod.append(self.dict[i])
 
 
 UltraShifr().mainloop()
