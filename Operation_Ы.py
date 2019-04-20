@@ -1,7 +1,6 @@
 import tkinter as ttk
 class UltraShifr(ttk.Frame):
-    def __init__(self, master):
-        super().__init__(master)
+    def __init__(self):
         self.dict = {"а": 1, "А": -1, "б": 2, "Б": -2, "в": 3, "В": -3,
                      "г": 4, "Г": -4, "д": 5, "Д": -5, "е": 6, "Е": -6,
                      "ё": 7, "Ё": -7, "ж": 8, "Ж": -8, "з": 9, "З": -9,
@@ -25,7 +24,9 @@ class UltraShifr(ttk.Frame):
                      28: "ъ", -28: "Ъ", 29: "ы", -29: "Ы", 30: "ь", -30: "Ь",
                      31: "э", -31: "Э", 32: "ю", -32: "Ю", 33: "я", -33: "Я",
                      34: " ", ",": 35, 35: ",", 36: ".", ".": 36, 37: "!", "!": 37, 38: "?", "?": 38}
+        ttk.Frame.__init__(self)
         self.pack()
+        self.master.title("Матричный Шифратор 3000")
         self.create_widgets()
 
 
@@ -34,18 +35,22 @@ class UltraShifr(ttk.Frame):
         self.Text_for_zashifr = ttk.Text()
         self.Baton_for_deshifr = ttk.Button(text="Дешифровать", command=self.decode())
         self.Label_for_zashifr = ttk.Label(text="")
+        self.Baton_for_zashifr.pack()
+        self.Text_for_zashifr.pack()
+        self.Baton_for_deshifr.pack()
+        self.Label_for_zashifr.pack()
+        self.txt = self.Text_for_zashifr.get()
 
     def code(self):
-        txt = self.Text_for_zashifr.get()
-        if len(txt) % 4 != 0:
-            while len(txt) % 4 != 0:
-                txt += " "
+        if len(self.txt) % 4 != 0:
+            while len(self.txt) % 4 != 0:
+                self.txt += " "
         bukvi = []
-        for i in range(0, len(txt)):
-            bukvi.append(txt[i])
+        for i in range(0, len(self.txt)):
+            bukvi.append(self.txt[i])
         with_dict = []
         for k in bukvi:
-            with_dict.append(dict[k])
+            with_dict.append(self.dict[k])
         matr = []
         for i in range(0, len(with_dict), 2):
             matr.append(with_dict[i:i+4])
@@ -83,7 +88,10 @@ class UltraShifr(ttk.Frame):
                 k_bukvam.append(decoded[i][g])
         vivod = []
         for i in k_bukvam:
-            vivod.append(dict[i])
+            vivod.append(self.dict[i])
         print("Ваше послание:", end=" ")
         for i in vivod:
             print(i, end="")
+
+
+UltraShifr().mainloop()
