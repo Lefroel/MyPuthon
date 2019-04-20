@@ -2,7 +2,6 @@ import tkinter as ttk
 
 class UltraZashifr():
     def __init__(self):
-        self.file_name = "zashifr.txt"
         f = open("poslanie.txt", "r")
         self.txt = list(map(int, f.readline()[0:-1].split(" ")))
         f.close()
@@ -29,7 +28,7 @@ class UltraZashifr():
                      28: "ъ", -28: "Ъ", 29: "ы", -29: "Ы", 30: "ь", -30: "Ь",
                      31: "э", -31: "Э", 32: "ю", -32: "Ю", 33: "я", -33: "Я",
                      34: " ", ",": 35, 35: ",", 36: ".", ".": 36, 37: "!", "!": 37, 38: "?", "?": 38}
-        self.save_to_file(self.file_name)
+        self.save_to_file()
 
     def code(self):
         if len(self.txt) % 4 != 0:
@@ -56,8 +55,8 @@ class UltraZashifr():
             zashifr += i
         return zashifr
 
-    def save_to_file(self, f_name):
-        f = open(f_name, "w")
+    def save_to_file(self):
+        f = open("zashifr.txt", "w")
         for i in self.code():
             f.write(str(i) + " ")
         f.close()
@@ -65,7 +64,6 @@ class UltraZashifr():
 
 class UltraDeshifr():
     def __init__(self):
-        self.file_name = "zashifr.txt"
         self.txt = ""
         self.dict = {"а": 1, "А": -1, "б": 2, "Б": -2, "в": 3, "В": -3,
                      "г": 4, "Г": -4, "д": 5, "Д": -5, "е": 6, "Е": -6,
@@ -90,9 +88,10 @@ class UltraDeshifr():
                      28: "ъ", -28: "Ъ", 29: "ы", -29: "Ы", 30: "ь", -30: "Ь",
                      31: "э", -31: "Э", 32: "ю", -32: "Ю", 33: "я", -33: "Я",
                      34: " ", ",": 35, 35: ",", 36: ".", ".": 36, 37: "!", "!": 37, 38: "?", "?": 38}
+        self.decode()
 
-    def load_from_file(self, f_name):
-        f = open(f_name, "r")
+    def load_from_file(self):
+        f = open("zashifr.txt", "r")
         data = list(map(int, f.readline()[0:-1].split(" ")))
         f.close()
         return data
@@ -103,8 +102,8 @@ class UltraDeshifr():
         k_bukvam = []
         self.vivod = []
         matr_deshifr = [2, -3, -1, 2]
-        for i in range(0, len(self.load_from_file(self.file_name)), 2):
-            matr.append(self.load_from_file(self.file_name)[i:i+4])
+        for i in range(0, len(self.load_from_file()), 2):
+            matr.append(self.load_from_file()[i:i+4])
         del matr[1::2]
         for i in range(0, len(matr)):
             deshifr = [(matr[i][0] * int(matr_deshifr[0])) + (matr[i][1] * matr_deshifr[2]), (matr[i][0] * matr_deshifr[1]) + (matr[i][1] * matr_deshifr[3]),
@@ -127,19 +126,23 @@ class UltraCode(ttk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        self.Baton_for_zashifr = ttk.Button(text="Зашифровать")
-        self.Text_for_zashifr = ttk.Text()
-        self.Baton_for_deshifr = ttk.Button(text="Дешифровать")
-        self.Label_for_zashifr = ttk.Label(text=UltraDeshifr())
-        self.Baton_for_zashifr.bind(UltraZashifr())
-        self.Baton_for_deshifr.bind(UltraDeshifr())
+        self.Baton_for_zashifr = ttk.Button(text="Зашифровать", command=lambda: self.zashifr())
+        self.Text_for_zashifr = ttk.Text(self)
+        self.Baton_for_deshifr = ttk.Button(text="Дешифровать", command=lambda: self.deshifr())
+        self.Label_for_zashifr = ttk.Label(text=self.deshifr())
         self.Baton_for_zashifr.pack()
         self.Text_for_zashifr.pack()
         self.Baton_for_deshifr.pack()
         self.Label_for_zashifr.pack()
-        f = open("poslanie.txt", "w")
-        f.write(self.Text_for_zashifr.get(self))
-        f.close()
 
+
+    def zashifr(self):
+        f = open("poslanie.txt", "w")
+        f.write(self.Text_for_zashifr.get("1.0", ttk.END))
+        f.close()
+        UltraZashifr()
+
+    def deshifr(self):
+        UltraDeshifr()
 
 UltraCode().mainloop()
