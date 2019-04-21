@@ -123,6 +123,12 @@ class UltraDeshifr():
 class UltraCode(ttk.Frame):
     def __init__(self):
         ttk.Frame.__init__(self)
+        f = open("zashifr.txt", "w")
+        f.write("1 0 0 1")
+        f.close()
+        f = open("poslanie.txt", "w")
+        f.write("Привет")
+        f.close()
         self.pack()
         self.master.title("Матричный Шифратор 3000")
         self.create_widgets()
