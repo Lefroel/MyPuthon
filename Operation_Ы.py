@@ -90,7 +90,7 @@ class UltraDeshifr():
                      31: "э", -31: "Э", 32: "ю", -32: "Ю", 33: "я", -33: "Я",
                      34: " ", ",": 35, 35: ",", 36: ".", ".": 36, 37: "!", "!": 37,
                      38: "?", "?": 38, "\n":39, 39:"\n"}
-        self.decode()
+        self.save_to_file()
 
     def load_from_file(self):
         f = open("zashifr.txt", "r")
@@ -132,10 +132,12 @@ class UltraCode(ttk.Frame):
         self.txtxt = f.readline()
         f.close()
         f = open("zashifr.txt", "w")
-        f.write("1 0 0 1 ")
+        if f.readline() == "":
+            f.write("1 0 0 1 ")
         f.close()
         f = open("poslanie.txt", "w")
-        f.write("Привет")
+        if f.readline() == "":
+            f.write("привет")
         f.close()
         self.pack()
         self.master.title("Матричный Шифратор 3000")
