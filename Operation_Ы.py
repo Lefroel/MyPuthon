@@ -98,6 +98,12 @@ class UltraDeshifr():
         f.close()
         return data
 
+    def save_to_file(self):
+        f = open("poslanie.txt", "w")
+        for i in self.decode():
+            f.write(i)
+        f.close()
+
     def decode(self):
         decoded = []
         matr = []
@@ -119,12 +125,14 @@ class UltraDeshifr():
         return self.vivod
 
 
-
 class UltraCode(ttk.Frame):
     def __init__(self):
         ttk.Frame.__init__(self)
+        f = open("poslanie.txt", "r")
+        self.txtxt = f.readline()
+        f.close()
         f = open("zashifr.txt", "w")
-        f.write("1 0 0 1")
+        f.write("1 0 0 1 ")
         f.close()
         f = open("poslanie.txt", "w")
         f.write("Привет")
@@ -132,9 +140,19 @@ class UltraCode(ttk.Frame):
         self.pack()
         self.master.title("Матричный Шифратор 3000")
         self.create_widgets()
+        self.refresh()
+
+    def refresh(self):
+        f = open("poslanie.txt", "r")
+        self.txtxt = f.readline()
+        f.close()
+        self.Label_for_zashifr.destroy()
+        self.Label_for_zashifr = ttk.Label(self, text=self.txtxt)
+        self.Label_for_zashifr.pack()
+        self.Label_for_zashifr.after(2000, self.refresh)
 
     def create_widgets(self):
-        self.Label_for_zashifr = ttk.Label(self, text=self.deshifr())
+        self.Label_for_zashifr = ttk.Label(self, text=self.txtxt)
         self.Baton_for_zashifr = ttk.Button(text="Зашифровать", command=lambda: self.zashifr())
         self.Text_for_zashifr = ttk.Text(self)
         self.Baton_for_deshifr = ttk.Button(text="Дешифровать", command=lambda: self.deshifr())
