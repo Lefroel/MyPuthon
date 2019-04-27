@@ -150,13 +150,10 @@ class UltraCode(ttk.Frame):
         self.refresh()
 
     def refresh(self):
-        f = open("poslanie.txt", "r")
-        self.txtxt = f.readline()
-        f.close()
         self.Label_for_zashifr.destroy()
-        self.Label_for_zashifr = ttk.Label(self, text=self.txtxt)
+        self.Label_for_zashifr = ttk.Label(self, text=UltraDeshifr().decode())
         self.Label_for_zashifr.pack()
-        self.Label_for_zashifr.after(2000, self.refresh)
+        self.Label_for_zashifr.after(3000, self.refresh)
 
     def create_widgets(self):
         self.Label_for_zashifr = ttk.Label(self, text=self.txtxt)
