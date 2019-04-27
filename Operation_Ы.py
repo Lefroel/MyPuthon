@@ -1,5 +1,6 @@
 import tkinter as ttk
 
+
 class UltraZashifr():
     def __init__(self):
         f = open("poslanie.txt", "r")
@@ -133,8 +134,8 @@ class UltraCode(ttk.Frame):
         f.close()
         f = open("zashifr.txt", "r")
         if f.readline() == "":
-            c  = open("zashifr.txt", "w")
-            c.write("1 0 0 1 ")
+            c = open("zashifr.txt", "w")
+            c.write("-3 -5 -3 -5 -3 -5 -3 -5 37 75 102 170 ")
             c.close()
         f.close()
         f = open("poslanie.txt", "r")
