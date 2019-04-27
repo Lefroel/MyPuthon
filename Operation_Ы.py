@@ -66,7 +66,7 @@ class UltraZashifr():
         matr = []
         for i in range(0, len(with_dict), 2):
             matr.append(with_dict[i:i+4])
-        matr_shifr = [2, 3, 1, 2]
+        matr_shifr = [10, 9, 11, 10]
         vivod = []
         del matr[1::2]
         for i in range(0, len(matr)):
@@ -152,7 +152,7 @@ class UltraDeshifr():
         matr = []
         k_bukvam = []
         self.vivod = []
-        matr_deshifr = [2, -3, -1, 2]
+        matr_deshifr = [10, -9, -11, 10]
         for i in range(0, len(self.load_from_file()), 2):
             matr.append(self.load_from_file()[i:i+4])
         del matr[1::2]
@@ -177,7 +177,7 @@ class UltraCode(ttk.Frame):
         f = open("zashifr.txt", "r")
         if f.readline() == "":
             c = open("zashifr.txt", "w")
-            c.write("-3 -5 -3 -5 -3 -5 -3 -5 37 75 102 170 ")
+            c.write("-39 -35 356 322 41 37 764 691 ")
             c.close()
         f.close()
         f = open("poslanie.txt", "r")
