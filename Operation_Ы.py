@@ -1,5 +1,5 @@
 import tkinter as ttk
-
+import pyperclip as pp
 
 class UltraZashifr():
     def __init__(self):
@@ -149,13 +149,18 @@ class UltraCode(ttk.Frame):
         self.create_widgets()
         self.refresh()
 
+    def paste(self):
+        var = pp.paste()
+        self.Text_for_zashifr.insert(1.0, var)
+
     def refresh(self):
         self.Label_for_zashifr.destroy()
         self.Label_for_zashifr = ttk.Label(self, text=UltraDeshifr().decode())
         self.Label_for_zashifr.pack()
-        self.Label_for_zashifr.after(3000, self.refresh)
+        self.Label_for_zashifr.after(5000, self.refresh)
 
     def create_widgets(self):
+        self.Baton_for_paste = ttk.Button(text="Скопировать в поле текст из буфера обмена", command=lambda: self.paste())
         self.Label_for_zashifr = ttk.Label(self, text=self.txtxt)
         self.Baton_for_zashifr = ttk.Button(text="Зашифровать", command=lambda: self.zashifr())
         self.Text_for_zashifr = ttk.Text(self)
@@ -164,6 +169,7 @@ class UltraCode(ttk.Frame):
         self.Label_for_zashifr.pack()
         self.Baton_for_zashifr.pack()
         self.Text_for_zashifr.pack()
+        self.Baton_for_paste.pack()
 
     def zashifr(self):
         f = open("poslanie.txt", "w")
