@@ -1,5 +1,7 @@
 import tkinter as ttk
 import pyperclip as pp
+from PIL import Image
+
 
 class UltraZashifr():
     def __init__(self):
@@ -36,8 +38,8 @@ class UltraZashifr():
                      "a": 45, "A": -45, "b": 46, "B": -46, "c": 47, "C": -47,
                      "d": 48, "D": -48, "e": 49, "E": -49, "f": 50, "F": -50,
                      "g": 51, "G": -51, "h": 52, "H": -52, "i": 53, "I": -53,
-                     "j": 54, "J": -54, "k": 55, "K": -55, "m": 56, "M": -56,
-                     "n": 57, "N": -57, "l": 58, "L": -58, "o": 59, "O": -59,
+                     "j": 54, "J": -54, "k": 55, "K": -55, "l": 56, "L": -56,
+                     "m": 57, "M": -57, "n": 58, "N": -58, "o": 59, "O": -59,
                      "p": 60, "P": -60, "q": 61, "Q": -61, "r": 62, "R": -62,
                      "s": 63, "S": -63, "t": 64, "T": -64, "u": 65, "U": -65,
                      "v": 66, "V": -66, "w": 67, "W": -67, "x": 68, "X": -68,
@@ -199,7 +201,7 @@ class UltraCode(ttk.Frame):
         self.Label_for_zashifr.destroy()
         self.Label_for_zashifr = ttk.Label(self, text=UltraDeshifr().decode())
         self.Label_for_zashifr.pack()
-        self.Label_for_zashifr.after(5000, self.refresh)
+        self.Label_for_zashifr.after(3000, self.refresh)
 
     def create_widgets(self):
         self.Baton_for_paste = ttk.Button(text="Скопировать в поле текст из буфера обмена", command=lambda: self.paste())
