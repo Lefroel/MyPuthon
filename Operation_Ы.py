@@ -172,21 +172,22 @@ class UltraDeshifr():
 class UltraCode(ttk.Frame):
     def __init__(self):
         ttk.Frame.__init__(self)
-        f = open("poslanie.txt", "r")
-        self.txtxt = f.readline()
-        f.close()
-        f = open("zashifr.txt", "r")
-        if f.readline() == "":
-            c = open("zashifr.txt", "w")
-            c.write("-35 -31 191 172 239 217 233 210 331 299 799 723 ")
+        self.txtxt = ""
+        try:
+            f = open("poslanie.txt", "r")
+        except:
+            f = open("poslanie.txt", "w")
+            f.write("Привет")
+            c = open("poslanie.txt", "r")
+            self.txtxt = c.readline()
             c.close()
-        f.close()
-        f = open("poslanie.txt", "r")
-        if f.readline() == "":
-            c = open("poslanie.txt", "w")
-            c.write("Привет")
-            c.close()
-        f.close()
+            f.close()
+        try:
+            f = open("zashifr.txt", "r")
+        except:
+            f = open("zashifr.txt", "w")
+            f.write("-35 -31 191 172 239 217 233 210 331 299 799 723 ")
+            f.close()
         self.pack()
         self.master.title("Матричный Шифратор 3000")
         self.create_widgets()
