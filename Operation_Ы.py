@@ -51,7 +51,7 @@ class UltraZashifr():
                      60: "p", -60: "P", 61: "q", -61: "Q", 62: "r", -62: "R",
                      63: "s", -63: "S", 64: "t", -64: "T", 65: "u", -65: "U",
                      66: "v", -66: "V", 67: "w", -67: "W", 68: "x", -68: "X",
-                     69: "y", -69: "Y", 70: "z", -70: "Z"}
+                     69: "y", -69: "Y", 70: "z", -70: "Z", "'": 71, 71: "'", '"': -71, -71: '"'}
         self.save_to_file()
 
     def code(self):
@@ -133,7 +133,7 @@ class UltraDeshifr():
                      60: "p", -60: "P", 61: "q", -61: "Q", 62: "r", -62: "R",
                      63: "s", -63: "S", 64: "t", -64: "T", 65: "u", -65: "U",
                      66: "v", -66: "V", 67: "w", -67: "W", 68: "x", -68: "X",
-                     69: "y", -69: "Y", 70: "z", -70: "Z"}
+                     69: "y", -69: "Y", 70: "z", -70: "Z", "'": 71, 71: "'", '"': -71, -71: '"'}
         self.save_to_file()
 
     def load_from_file(self):
@@ -198,13 +198,13 @@ class UltraCode(ttk.Frame):
 
     def refresh(self):
         self.Label_for_zashifr.destroy()
-        self.Label_for_zashifr = ttk.Label(self, text=UltraDeshifr().decode())
+        self.Label_for_zashifr = ttk.Label(self, text=UltraDeshifr().decode(), font="allegrian 30", width="100")
         self.Label_for_zashifr.pack()
         self.Label_for_zashifr.after(2000, self.refresh)
 
     def create_widgets(self):
         self.Baton_for_paste = ttk.Button(text="Скопировать в поле текст из буфера обмена", command=lambda: self.paste(), font="arial 30")
-        self.Label_for_zashifr = ttk.Label(self, text=self.txtxt, font="arial 50")
+        self.Label_for_zashifr = ttk.Label(self, font="allegrian 50", text=self.txtxt, width="100")
         self.Baton_for_zashifr = ttk.Button(text="Зашифровать", command=lambda: self.zashifr(), font="arial 30")
         self.Text_for_zashifr = ttk.Text(self, font="arial 10")
         self.Baton_for_deshifr = ttk.Button(text="Дешифровать", command=lambda: self.deshifr(), font="arial 30")
