@@ -178,7 +178,7 @@ class UltraCode(ttk.Frame):
         f = open("zashifr.txt", "r")
         if f.readline() == "":
             c = open("zashifr.txt", "w")
-            c.write("41 37 634 574 191 172 476 431 342 310 356 322 41 37 315 285 411 371 560 506 192 174 410 371 764 691 714 646 -35 -31 269 244 674 610 251 228 116 105 574 520 ")
+            c.write("-35 -31 191 172 239 217 233 210 331 299 799 723 ")
             c.close()
         f.close()
         f = open("poslanie.txt", "r")
@@ -198,16 +198,16 @@ class UltraCode(ttk.Frame):
 
     def refresh(self):
         self.Label_for_zashifr.destroy()
-        self.Label_for_zashifr = ttk.Label(self, text=UltraDeshifr().decode(), font="allegrian 20", width="100", bg="rosy brown")
+        self.Label_for_zashifr = ttk.Label(self, text=UltraDeshifr().decode(), font="allegrian 20", width="50", bg="rosy brown")
         self.Label_for_zashifr.pack()
         self.Label_for_zashifr.after(2000, self.refresh)
 
     def create_widgets(self):
-        self.Baton_for_paste = ttk.Button(text="Нажми, чтобы скопировать в поле ввода текст из буфера обмена", command=lambda: self.paste(), font="arial 20", width="100", bg="burlywood1")
-        self.Label_for_zashifr = ttk.Label(self, font="allegrian 20", text=self.txtxt, width="100", bg="rosy brown")
-        self.Baton_for_zashifr = ttk.Button(text="Нажми, чтобы зашифровать", command=lambda: self.zashifr(), font="arial 20", width="100", bg="wheat1")
-        self.Text_for_zashifr = ttk.Text(self, font="arial 20", bg="cornsilk2")
-        self.Baton_for_deshifr = ttk.Button(text="Нажми, чтобы дешифровать", command=lambda: self.deshifr(), font="arial 20", width="100", bg="gold1")
+        self.Baton_for_paste = ttk.Button(text="Нажми, чтобы скопировать в поле ввода текст из буфера обмена", command=lambda: self.paste(), font="arial 20", width="50", bg="burlywood1")
+        self.Label_for_zashifr = ttk.Label(self, font="allegrian 20", text=self.txtxt, width="50", bg="rosy brown")
+        self.Baton_for_zashifr = ttk.Button(text="Нажми, чтобы зашифровать", command=lambda: self.zashifr(), font="arial 20", width="50", bg="wheat1")
+        self.Text_for_zashifr = ttk.Text(self, font="arial 20", bg="cornsilk2", width="50", height="10")
+        self.Baton_for_deshifr = ttk.Button(text="Нажми, чтобы дешифровать", command=lambda: self.deshifr(), font="arial 20", width="50", bg="gold1")
         self.Text_for_zashifr.pack()
         self.Label_for_zashifr.pack()
         self.Baton_for_deshifr.pack()
