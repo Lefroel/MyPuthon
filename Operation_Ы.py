@@ -1,6 +1,5 @@
 import tkinter as ttk
 import pyperclip as pp
-from PIL import Image
 
 
 class UltraZashifr():
