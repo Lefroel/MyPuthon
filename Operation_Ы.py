@@ -178,7 +178,7 @@ class UltraCode(ttk.Frame):
         f = open("zashifr.txt", "r")
         if f.readline() == "":
             c = open("zashifr.txt", "w")
-            c.write("-39 -35 356 322 41 37 764 691 ")
+            c.write("-35 -31 191 172 239 217 233 210 331 299 799 723 ")
             c.close()
         f.close()
         f = open("poslanie.txt", "r")
@@ -198,16 +198,16 @@ class UltraCode(ttk.Frame):
 
     def refresh(self):
         self.Label_for_zashifr.destroy()
-        self.Label_for_zashifr = ttk.Label(self, text=UltraDeshifr().decode(), font="allegrian 20", width="50")
+        self.Label_for_zashifr = ttk.Label(self, text=UltraDeshifr().decode(), font="allegrian 20", width="100", bg="rosy brown")
         self.Label_for_zashifr.pack()
         self.Label_for_zashifr.after(2000, self.refresh)
 
     def create_widgets(self):
-        self.Baton_for_paste = ttk.Button(text="Скопировать в поле текст из буфера обмена", command=lambda: self.paste(), font="arial 20", width="100")
-        self.Label_for_zashifr = ttk.Label(self, font="allegrian 20", text=self.txtxt, width="50")
-        self.Baton_for_zashifr = ttk.Button(text="Зашифровать", command=lambda: self.zashifr(), font="arial 20", width="100")
-        self.Text_for_zashifr = ttk.Text(self, font="arial 20")
-        self.Baton_for_deshifr = ttk.Button(text="Дешифровать", command=lambda: self.deshifr(), font="arial 20", width="100")
+        self.Baton_for_paste = ttk.Button(text="Скопировать в поле текст из буфера обмена", command=lambda: self.paste(), font="arial 20", width="100", bg="burlywood1")
+        self.Label_for_zashifr = ttk.Label(self, font="allegrian 20", text=self.txtxt, width="100", bg="rosy brown")
+        self.Baton_for_zashifr = ttk.Button(text="Зашифровать", command=lambda: self.zashifr(), font="arial 20", width="100", bg="wheat1")
+        self.Text_for_zashifr = ttk.Text(self, font="arial 20", bg="cornsilk2")
+        self.Baton_for_deshifr = ttk.Button(text="Дешифровать", command=lambda: self.deshifr(), font="arial 20", width="100", bg="gold1")
         self.Text_for_zashifr.pack()
         self.Label_for_zashifr.pack()
         self.Baton_for_deshifr.pack()
